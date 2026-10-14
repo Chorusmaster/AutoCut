@@ -1,14 +1,13 @@
-# Turborepo
-.turbo
-
-# Env vars
-.env*
-!.env.example
-
-.next/
-
-.font-cache/
-
-next-env.d.ts
-
-*.tsbuildinfo
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json

@@ -1,47 +1,25 @@
-# Desktop
+# OpenCut Desktop
 
-The native desktop app, built with [GPUI](https://gpui.rs).
+Built with [GPUI](https://www.gpui.rs).
 
-## Getting started
+> [!WARNING]
+> Very early. Right now this is just a window that opens.
 
-**1. Install Rust:**
+## Running
 
-```bash
-# Linux / macOS / WSL
-./script/setup-rust
+Rust is pinned in `.prototools` at the repo root (`proto use` installs it).
+
+```sh
+moon run desktop:dev     # cargo run
+moon run desktop:check   # cargo check
+moon run desktop:build   # cargo build --release
 ```
 
-```powershell
-# Windows
-powershell -ExecutionPolicy Bypass -File .\script\setup-rust.ps1
-```
+The first build compiles GPUI from source and takes a while. The root `Cargo.lock` is committed.
 
-Both scripts skip installation if Rust is already present. On Linux/macOS/WSL only: after a fresh install, reload your shell with `source "$HOME/.cargo/env"`
+## Platform requirements
 
-**2. Install native dependencies:**
-
-```bash
-# Linux / macOS / WSL
-./apps/desktop/script/setup
-```
-
-```powershell
-# Windows
-powershell -ExecutionPolicy Bypass -File .\apps\desktop\script\setup.ps1
-```
-
-**3. Run:**
-
-```bash
-cargo run -p opencut-desktop
-```
-
-## Platform notes
-
-**Linux:** supports apt (Debian/Ubuntu/Mint), dnf (Fedora/RHEL), and pacman (Arch).
-
-**macOS:** installs Xcode Command Line Tools if missing.
-
-**Windows:** the setup script checks for Visual Studio Build Tools. If missing, it prints the install link.
-
-**WSL:** runs the same scripts as Linux. Window rendering works via WSLg on Windows 11 and Windows 10 22H2+. If you're on an older build, test on the host instead.
+- **macOS**: Xcode command line tools (Metal renderer).
+- **Windows**: no extra dependencies (Win32 + DirectWrite).
+- **Linux**: renders via Vulkan (Blade), windows via Wayland or X11 (both enabled by default). System packages (Debian/Ubuntu names): `libvulkan1` + working Vulkan drivers, `libwayland-dev`, `libx11-xcb-dev`, `libxkbcommon-x11-dev`, `libfontconfig-dev`, plus a C toolchain and `cmake`.
+- **WSL2/WSLg**: uses XWayland automatically when available. GPUI 0.2.2 requires `xdg_wm_base` v2–5, while WSLg advertises v1.

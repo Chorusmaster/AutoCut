@@ -1,17 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "opencut",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2025-04-01",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-  "services": [
+  "name": "opencut-web",
+  "compatibility_date": "2025-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "routes": [
     {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "opencut"
+      "pattern": "new.opencut.app",
+      "custom_domain": true
     }
   ]
 }

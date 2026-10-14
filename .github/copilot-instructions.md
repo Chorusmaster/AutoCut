@@ -4,10 +4,12 @@ applyTo: "**/*.{ts,tsx,js,jsx}"
 
 # Project Context
 
-Strict type safety, accessibility standards, and consistent code quality for JavaScript/TypeScript projects, enforced via ESLint (linting) and Prettier (formatting).
+Ultracite enforces strict type safety, accessibility standards, and consistent code quality for JavaScript/TypeScript projects using Biome's lightning-fast formatter and linter.
 
 ## Key Principles
 
+- Zero configuration required
+- Subsecond performance
 - Maximum type safety
 - AI-friendly code generation
 
